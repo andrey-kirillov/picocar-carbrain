@@ -1,0 +1,1 @@
+declare function delay(delay: number): void;

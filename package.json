@@ -1,0 +1,24 @@
+{
+  "name": "pico-car-ts",
+  "version": "1.0.0",
+  "description": "Pico car",
+  "main": "main.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prog": "tsc && kaluma flash ./main.js --bundle"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrey-kirillov/pico-car-ts.git"
+  },
+  "author": "Andrey Kirillov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrey-kirillov/pico-car-ts/issues"
+  },
+  "homepage": "https://github.com/andrey-kirillov/pico-car-ts#readme",
+  "devDependencies": {
+    "@types/node": "^20.11.26",
+    "typescript": "^5.4.2"
+  }
+}
