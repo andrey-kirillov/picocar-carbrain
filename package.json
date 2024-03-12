@@ -4,8 +4,9 @@
   "description": "Pico car",
   "main": "main.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prog": "tsc && kaluma flash ./main.js --bundle"
+    "clean": "rmdir /s /q dist",
+    "prog": "npm run clean && tsc && kaluma flash ./dist/main.js --bundle",
+    "progs": "clean && tsc && kaluma flash ./dist/main.js --bundle --shell"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,8 @@
   "devDependencies": {
     "@types/node": "^20.11.26",
     "typescript": "^5.4.2"
+  },
+  "dependencies": {
+    "servo": "github:niklauslee/servo"
   }
 }
