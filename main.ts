@@ -1,26 +1,36 @@
 // import BuiltInLed from './modules/builtInLed';
 // import Buzzer from './modules/buzzer';
-const {Servo} = require('servo');
+// const { Servo } = require('servo');
+import DcMotor from "./modules/dcMotor";
+
+/** DC Motor **/
+const dcMotor = new DcMotor(18, 19, 500, 1);
+dcMotor.startForward();
+delay(1000);
+dcMotor.stop();
+dcMotor.startBackward();
+delay(1000);
+dcMotor.stop();
 
 /** Servo **/
-const servo = new Servo();
+// const servo = new Servo();
 // attach to GP15
-servo.attach(7);
+// servo.attach(7);
 // Turn from 0 to 180 by 10 degrees
 // for (let i = 0; i <= 180; i = i+10) {
 //     console.log(i);
 //     servo.write(i);
 //     delay(500);
 // }
-servo.write(0);
-delay(2500);
-servo.write(90);
-delay(2500);
-servo.write(180);
-delay(2500);
-servo.write(90);
-delay(2500);
-servo.write(0);
+// servo.write(0);
+// delay(500);
+// servo.write(90);
+// delay(500);
+// servo.write(180);
+// delay(500);
+// servo.write(90);
+// delay(500);
+// servo.write(0);
 
 /** LED **/
 // const led = new BuiltInLed();

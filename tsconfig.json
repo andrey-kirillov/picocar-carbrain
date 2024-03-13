@@ -3,13 +3,15 @@
     "target": "es5",
     "module": "commonjs",
     "removeComments": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "noEmitOnError": true
   },
   "include": [
     "./main.ts",
     "./types",
+    "./modules"
   ],
   "exclude": [
-    "node_modules",
+    "node_modules"
   ]
 }
