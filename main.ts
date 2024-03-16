@@ -4,12 +4,19 @@
 import DcMotor from "./modules/dcMotor";
 
 /** DC Motor **/
-const dcMotor = new DcMotor(18, 19, 500, 1);
+const dcMotor = new DcMotor(19, 18, 35, 0.2);
+DcMotor.setGlobalSpeed(1)
 dcMotor.startForward();
-delay(1000);
-dcMotor.stop();
+delay(5000);
+DcMotor.setGlobalSpeed(0.6)
+dcMotor.startForward();
+delay(5000);
+DcMotor.setGlobalSpeed(0.2)
+dcMotor.startForward();
+delay(5000);
+
 dcMotor.startBackward();
-delay(1000);
+delay(5000);
 dcMotor.stop();
 
 /** Servo **/
