@@ -4,20 +4,20 @@
 import DcMotor from "./modules/dcMotor";
 
 /** DC Motor **/
-const dcMotor = new DcMotor(19, 18, 35, 0.2);
-DcMotor.setGlobalSpeed(1)
-dcMotor.startForward();
-delay(5000);
-DcMotor.setGlobalSpeed(0.6)
-dcMotor.startForward();
-delay(5000);
-DcMotor.setGlobalSpeed(0.2)
-dcMotor.startForward();
-delay(5000);
-
-dcMotor.startBackward();
-delay(5000);
-dcMotor.stop();
+// const dcMotor = new DcMotor(19, 18, 35, 0.2);
+// DcMotor.setGlobalSpeed(1)
+// dcMotor.startForward();
+// delay(5000);
+// DcMotor.setGlobalSpeed(0.6)
+// dcMotor.startForward();
+// delay(5000);
+// DcMotor.setGlobalSpeed(0.2)
+// dcMotor.startForward();
+// delay(5000);
+//
+// dcMotor.startBackward();
+// delay(5000);
+// dcMotor.stop();
 
 /** Servo **/
 // const servo = new Servo();
