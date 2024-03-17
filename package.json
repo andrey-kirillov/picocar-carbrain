@@ -6,7 +6,8 @@
   "scripts": {
     "clean": "rmdir /s /q dist",
     "prog": "npm run clean && tsc && kaluma flash ./dist/main.js --bundle",
-    "progs": "tsc && kaluma flash ./dist/main.js --bundle --shell"
+    "progs": "tsc && kaluma flash ./dist/main.js --bundle --shell",
+    "progs1": "tsc && kaluma flash ./dist/main.js --bundle && kaluma shell"
   },
   "repository": {
     "type": "git",

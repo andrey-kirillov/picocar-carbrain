@@ -1,24 +1,36 @@
 // import BuiltInLed from './modules/builtInLed';
 // import Buzzer from './modules/buzzer';
 // const { Servo } = require('servo');
-// import DcMotor from "./modules/dcMotor";
-import './modules/wifi'
+import DcMotor from "./modules/dcMotor";
+import setWifiEventHandler, { TEventHandler } from './modules/wifi';
+
 
 /** DC Motor **/
-// const dcMotor = new DcMotor(19, 18, 35, 0.2);
-// DcMotor.setGlobalSpeed(1)
-// dcMotor.startForward();
-// delay(5000);
-// DcMotor.setGlobalSpeed(0.6)
-// dcMotor.startForward();
-// delay(5000);
-// DcMotor.setGlobalSpeed(0.2)
-// dcMotor.startForward();
-// delay(5000);
-//
-// dcMotor.startBackward();
-// delay(5000);
-// dcMotor.stop();
+const dcMotor = new DcMotor(19, 18, 35, 0.2);
+DcMotor.setGlobalSpeed(0.3);
+
+/** Wifi **/
+const wifiEventHandler: TEventHandler = (cmd) => {
+    console.log(`wifiEventHandler ${cmd}`);
+    switch (cmd) {
+        case 'dc:forward':
+            console.log(`case ${cmd}`);
+            dcMotor.startForward();
+            break;
+        case 'dc:backward':
+            console.log(`case ${cmd}`);
+            dcMotor.startBackward();
+            break;
+        case 'dc:stop':
+            console.log(`case ${cmd}`);
+            dcMotor.stop();
+            break;
+        default:
+            console.log('Unknown wifi/http command')
+
+    }
+}
+setWifiEventHandler(wifiEventHandler);
 
 /** Servo **/
 // const servo = new Servo();
