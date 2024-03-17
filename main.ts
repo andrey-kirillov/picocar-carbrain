@@ -1,7 +1,8 @@
 // import BuiltInLed from './modules/builtInLed';
 // import Buzzer from './modules/buzzer';
 // const { Servo } = require('servo');
-import DcMotor from "./modules/dcMotor";
+// import DcMotor from "./modules/dcMotor";
+import './modules/wifi'
 
 /** DC Motor **/
 // const dcMotor = new DcMotor(19, 18, 35, 0.2);
