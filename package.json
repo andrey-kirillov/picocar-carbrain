@@ -5,9 +5,9 @@
   "main": "main.ts",
   "scripts": {
     "clean": "rmdir /s /q dist",
-    "prog": "npm run clean && tsc && kaluma flash ./dist/main.js --bundle",
-    "progs": "tsc && kaluma flash ./dist/main.js --bundle --shell",
-    "progs1": "tsc && kaluma flash ./dist/main.js --bundle && kaluma shell"
+    "prog": "tsc && kaluma flash ./dist/main.js --bundle",
+    "progs": "tsc && kaluma flash ./dist/main.js --minify --bundle --shell",
+    "progs1": "tsc && kaluma flash ./dist/main.js --minify --bundle && kaluma shell"
   },
   "repository": {
     "type": "git",

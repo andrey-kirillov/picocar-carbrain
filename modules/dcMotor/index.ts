@@ -8,8 +8,10 @@ class DcMotor {
     private readonly inPin2: number;
     private readonly freq: number;
     private readonly duty: number;
+    private isBusy: 'forward' | 'backward' | 'stop' = 'stop';
 
     private static staticDuty: number;
+    private static staticFreq: number;
 
     constructor(inPin1: number, inPin2: number, freq?: number, duty: number = 0.5) {
         this.inPin1 = inPin1;
@@ -21,21 +23,35 @@ class DcMotor {
         pinMode(inPin2, 1);
     }
 
-    static setGlobalSpeed(speed: number) {
-        DcMotor.staticDuty = speed;
+    static setGlobalSpeed = (instance: DcMotor, duty?: number, freq?: number) => {
+
+        if (typeof duty !== 'undefined')
+            DcMotor.staticDuty = duty;
+        if (typeof freq !== 'undefined')
+            DcMotor.staticFreq = freq;
+
+        if (instance.isBusy === 'forward')
+            instance.startForward();
+
+        if (instance.isBusy === 'backward')
+            instance.startBackward();
+
     }
 
     startForward() {
-        analogWrite(this.inPin2, DcMotor.staticDuty ?? this.duty, this.freq);
+        this.isBusy = 'forward';
+        analogWrite(this.inPin2, DcMotor.staticDuty ?? this.duty, DcMotor.staticFreq ?? this.freq);
     }
 
     startBackward() {
-        analogWrite(this.inPin1, DcMotor.staticDuty ?? this.duty, this.freq);
+        this.isBusy = 'backward';
+        analogWrite(this.inPin1, DcMotor.staticDuty ?? this.duty, DcMotor.staticFreq ?? this.freq);
     }
 
     stop() {
-        analogWrite(this.inPin1, 0, this.freq);
-        analogWrite(this.inPin2, 0, this.freq);
+        this.isBusy = 'stop';
+        analogWrite(this.inPin1, 0, DcMotor.staticFreq ?? this.freq);
+        analogWrite(this.inPin2, 0, DcMotor.staticFreq ?? this.freq);
     }
 }
 

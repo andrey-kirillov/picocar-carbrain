@@ -1,5 +1,5 @@
 // import BuiltInLed from './modules/builtInLed';
-// import Buzzer from './modules/buzzer';
+import Buzzer from './modules/buzzer';
 // const { Servo } = require('servo');
 import DcMotor from "./modules/dcMotor";
 import setWifiEventHandler, { TEventHandler } from './modules/wifi';
@@ -7,11 +7,13 @@ import setWifiEventHandler, { TEventHandler } from './modules/wifi';
 
 /** DC Motor **/
 const dcMotor = new DcMotor(19, 18, 35, 0.2);
-DcMotor.setGlobalSpeed(0.3);
+
+/** Buzzer **/
+const buzzer = new Buzzer();
 
 /** Wifi **/
-const wifiEventHandler: TEventHandler = (cmd) => {
-    console.log(`wifiEventHandler ${cmd}`);
+const wifiEventHandler: TEventHandler = (cmd, value) => {
+    console.log(`wifiEventHandler`, { cmd, value });
     switch (cmd) {
         case 'dc:forward':
             console.log(`case ${cmd}`);
@@ -24,6 +26,18 @@ const wifiEventHandler: TEventHandler = (cmd) => {
         case 'dc:stop':
             console.log(`case ${cmd}`);
             dcMotor.stop();
+            break;
+        case 'dc:speedDuty':
+            console.log(`case ${cmd}`, value);
+            DcMotor.setGlobalSpeed(dcMotor, +value);
+            break;
+        case 'dc:speedFreq':
+            console.log(`case ${cmd}`, value);
+            DcMotor.setGlobalSpeed(dcMotor, undefined, +value);
+            break;
+        case 'bz:test':
+            console.log(`case ${cmd}`);
+            buzzer.playTest();
             break;
         default:
             console.log('Unknown wifi/http command')
@@ -55,7 +69,3 @@ setWifiEventHandler(wifiEventHandler);
 /** LED **/
 // const led = new BuiltInLed();
 // led.toggleWithInterval();
-
-/** Buzzer **/
-// const buzzer = new Buzzer();
-// buzzer.playTest();
